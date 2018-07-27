@@ -72,6 +72,21 @@
                 return choice;
             }
 
+            function playRound(playersChoice, computersChoice) {
+                let pc = playersChoice;
+                let cc = computersChoice;
+
+                if ((pc === 'Rock' && cc === 'Scissors') || (pc === 'Paper' && cc === 'Rock') || (pc === 'Scissors' && cc === 'Paper')) {
+                    return ('You win! ' + pc + ' beats ' + cc + '!');
+                }
+
+                if (pc === cc) {
+                    return ('It\'s a tie! You both played ' + pc + '!');
+                }
+
+                return ('You lose! ' + cc + ' beats ' + pc + '!');
+            }
+
             
         </script>
     </body>
