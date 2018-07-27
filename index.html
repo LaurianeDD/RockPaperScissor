@@ -5,7 +5,61 @@
     </head>
     <body>
         <script>
-        
+
+            /* Random distribution check
+            function checkRandomDistro() {
+                let counter = 0;
+                let one = 0;
+                let two = 0;
+                let three = 0;
+
+                while (counter < 100000) {
+                    switch (Math.floor(Math.random() * 3) + 1) {
+                        case 1:
+                            one ++;
+                            break;
+
+                        case 2:
+                            two ++;
+                            break;
+
+                        case 3:
+                            three ++;
+                            break;
+                    }
+
+                    counter ++;
+                }
+
+                console.log(one + " // " + two + " // " + three + " --- " + (one + two + three));
+            }
+            */
+
+            function getRandomNumber() {
+                return Math.floor(Math.random() * 3) + 1;
+            }
+
+            function computerPlay() {
+                let choice;
+
+                switch (getRandomNumber()) {
+                    case 1:
+                        choice = 'Rock';
+                        break;
+
+                    case 2:
+                        choice = 'Paper';
+                        break;
+
+                    case 3:
+                        choice = 'Scissors'
+                }
+
+                return choice;
+            }
+
+            
+            
         </script>
     </body>
 </html>
