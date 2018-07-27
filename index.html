@@ -62,14 +62,17 @@
 
                 for (i = 0, len = WAYSTOWIN.length; i < len; i++) {
                     if (WAYSTOWIN[i][0] === playerChoice && WAYSTOWIN[i][1] === computChoice) {
+                        console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
                         return 'Player';
                     }
                 }
 
                 if (playerChoice === computChoice) {
+                    console.log('You both lose! Or win... Anyway, it\'s a tie!');
                     return 'Tie';
                 }
 
+                console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
                 return 'Computer';
             }
 
@@ -92,22 +95,19 @@
                 while (rounds < 5) {
                     let playerChoice = getPlayerChoice(OPTIONS);
                     let computChoice = computerPlay(OPTIONS);
-                    let result = playRound(playerChoice, computChoice)
+                    let roundWinner = playRound(playerChoice, computChoice)
                     
-                    switch (result) {
+                    switch (roundWinner) {
                     
                         case 'Player':
                             playerScore ++;
-                            console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
                             break;
                     
                         case 'Computer':
                             computScore ++;
-                            console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
                             break;
 
                         case 'Tie':
-                            console.log('You both lose! Or win... Anyway, it\'s a tie!');
                             break;
                     }
 
