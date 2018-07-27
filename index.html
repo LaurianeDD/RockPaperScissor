@@ -35,8 +35,8 @@
             }
             */
 
-            function getRandomNumber() {
-                return Math.floor(Math.random() * 3) + 1;
+            function getRandomNumber(rangeLength) {
+                return Math.floor(Math.random() * rangeLength);
             }
 
             function capitalize(str) {
@@ -44,23 +44,8 @@
             }
 
             function computerPlay() {
-                let choice;
-
-                switch (getRandomNumber()) {
-                    case 1:
-                        choice = 'Rock';
-                        break;
-
-                    case 2:
-                        choice = 'Paper';
-                        break;
-
-                    case 3:
-                        choice = 'Scissors'
-                        break;
-                }
-
-                return choice;
+                const CHOICES = ['Rock', 'Paper', 'Scissors'];
+                return CHOICES[getRandomNumber(CHOICES.length)];
             }           
 
             function getPlayerChoice() {
