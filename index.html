@@ -88,6 +88,16 @@
                 return 'Computer';
             }
 
+            function getWinner(playerScore, computScore) {
+                if (playerScore > computScore) {
+                    return ('You win ' + playerScore + ' to ' + computScore + '!');
+                }
+                if (computScore > playerScore) {
+                    return ('You lose ' + computScore + ' to ' + playerScore + '.');
+                }
+                return ('It\'s a tie. ' + playerScore + '-' + computScore);
+            }
+
             function game() {
                 let rounds = 0;
                 let playerScore = 0;
@@ -118,13 +128,7 @@
                     rounds ++;
                 }
                 
-                if (playerScore > computScore) {
-                    console.log('You win ' + playerScore + ' to ' + computScore + '!');
-                } else if (computScore > playerScore) {
-                    console.log('You lose ' + computScore + ' to ' + playerScore + '.');
-                } else {
-                    console.log('It\'s a tie. ' + playerScore + '-' + computScore);
-                }
+                console.log(getWinner(playerScore, computScore));
             }
             
         </script>
