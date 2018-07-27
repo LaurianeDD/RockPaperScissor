@@ -57,6 +57,7 @@
 
                     case 3:
                         choice = 'Scissors'
+                        break;
                 }
 
                 return choice;
@@ -102,13 +103,16 @@
                     case 'Player':
                         playerScore ++;
                         console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
+                        break;
                     
                     case 'Computer':
                         computScore ++;
                         console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
+                        break;
 
                     case 'Tie':
                         console.log('You both lose! Or win... Anyway, it\'s a tie!');
+                        break;
                     }
 
                     rounds ++;
