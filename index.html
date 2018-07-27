@@ -59,14 +59,15 @@
             }
 
             function playRound(playerChoice, computChoice) {
-                let pc = playerChoice;
-                let cc = computChoice;
+                const WAYSTOWIN = [['Rock', 'Scissors'], ['Paper', 'Rock'], ['Scissors', 'Paper']];
 
-                if ((pc === 'Rock' && cc === 'Scissors') || (pc === 'Paper' && cc === 'Rock') || (pc === 'Scissors' && cc === 'Paper')) {
-                    return 'Player';
+                for (i = 0, len = WAYSTOWIN.length; i < len; i++) {
+                    if (WAYSTOWIN[i][0] === playerChoice && WAYSTOWIN[i][1] === computChoice) {
+                        return 'Player';
+                    }
                 }
 
-                if (pc === cc) {
+                if (playerChoice === computChoice) {
                     return 'Tie';
                 }
 
@@ -95,19 +96,19 @@
                     
                     switch (result) {
                     
-                    case 'Player':
-                        playerScore ++;
-                        console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
-                        break;
+                        case 'Player':
+                            playerScore ++;
+                            console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
+                            break;
                     
-                    case 'Computer':
-                        computScore ++;
-                        console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
-                        break;
+                        case 'Computer':
+                            computScore ++;
+                            console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
+                            break;
 
-                    case 'Tie':
-                        console.log('You both lose! Or win... Anyway, it\'s a tie!');
-                        break;
+                        case 'Tie':
+                            console.log('You both lose! Or win... Anyway, it\'s a tie!');
+                            break;
                     }
 
                     rounds ++;
