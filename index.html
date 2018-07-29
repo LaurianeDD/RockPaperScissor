@@ -60,8 +60,8 @@
             function playRound(playerChoice, computChoice) {
                 const WAYSTOWIN = [['Rock', 'Scissors'], ['Paper', 'Rock'], ['Scissors', 'Paper']];
 
-                for (i = 0, len = WAYSTOWIN.length; i < len; i++) {
-                    if (WAYSTOWIN[i][0] === playerChoice && WAYSTOWIN[i][1] === computChoice) {
+                for (let way of WAYSTOWIN) {
+                    if (way[0] === playerChoice && way[1] === computChoice) {
                         console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
                         return 'Player';
                     }
