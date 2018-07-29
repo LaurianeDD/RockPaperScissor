@@ -80,7 +80,7 @@
                 return 'Computer';
             }
 
-            function getWinner(playerScore, computScore) {
+            function getGameWinner(playerScore, computScore) {
                 if (playerScore > computScore) {
                     return ('You win ' + playerScore + ' to ' + computScore + '!');
                 }
@@ -115,7 +115,7 @@
                     rounds ++;
                 }
                 
-                console.log(getWinner(playerScore, computScore));
+                console.log(getGameWinner(playerScore, computScore));
             }
             
         </script>
