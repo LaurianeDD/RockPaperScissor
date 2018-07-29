@@ -51,14 +51,18 @@
                 let choice;
 
                 while (!OPTIONS.includes(choice)) {
-                    choice = capitalize(prompt('Enter your choice:', 'Rock, Paper or Scissors'));
+                    choice = capitalize(prompt('Enter your choice:', OPTIONS));
                 }
                 
                 return choice;
             }
 
-            function playRound(playerChoice, computChoice) {
+            function playRound() {
                 const WAYSTOWIN = [['Rock', 'Scissors'], ['Paper', 'Rock'], ['Scissors', 'Paper']];
+                const OPTIONS = ['Rock', 'Paper', 'Scissors'];
+
+                let playerChoice = getPlayerChoice(OPTIONS);
+                let computChoice = computerPlay(OPTIONS);
 
                 for (let way of WAYSTOWIN) {
                     if (way[0] === playerChoice && way[1] === computChoice) {
@@ -90,12 +94,9 @@
                 let rounds = 0;
                 let playerScore = 0;
                 let computScore = 0;
-                const OPTIONS = ['Rock', 'Paper', 'Scissors'];
-
+                
                 while (rounds < 5) {
-                    let playerChoice = getPlayerChoice(OPTIONS);
-                    let computChoice = computerPlay(OPTIONS);
-                    let roundWinner = playRound(playerChoice, computChoice)
+                    let roundWinner = playRound()
                     
                     switch (roundWinner) {
                     
