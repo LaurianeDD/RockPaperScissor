@@ -5,36 +5,7 @@
     </head>
     <body>
         <script>
-
-            /* Random distribution check
-            function checkRandomDistro() {
-                let counter = 0;
-                let one = 0;
-                let two = 0;
-                let three = 0;
-
-                while (counter < 100000) {
-                    switch (Math.floor(Math.random() * 3) + 1) {
-                        case 1:
-                            one ++;
-                            break;
-
-                        case 2:
-                            two ++;
-                            break;
-
-                        case 3:
-                            three ++;
-                            break;
-                    }
-
-                    counter ++;
-                }
-
-                console.log(one + " // " + two + " // " + three + " --- " + (one + two + three));
-            }
-            */
-
+            
             function getRandomNumber(rangeLength) {
                 return Math.floor(Math.random() * rangeLength);
             }
@@ -57,12 +28,8 @@
                 return choice;
             }
 
-            function playRound() {
+            function getRoundWinner(playerChoice, computChoice) {
                 const WAYSTOWIN = [['Rock', 'Scissors'], ['Paper', 'Rock'], ['Scissors', 'Paper']];
-                const OPTIONS = ['Rock', 'Paper', 'Scissors'];
-
-                let playerChoice = getPlayerChoice(OPTIONS);
-                let computChoice = computerPlay(OPTIONS);
 
                 for (let way of WAYSTOWIN) {
                     if (way[0] === playerChoice && way[1] === computChoice) {
@@ -78,6 +45,15 @@
 
                 console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
                 return 'Computer';
+            }
+
+            function playRound() {                
+                const OPTIONS = ['Rock', 'Paper', 'Scissors'];
+
+                let playerChoice = getPlayerChoice(OPTIONS);
+                let computChoice = computerPlay(OPTIONS);
+
+                return getRoundWinner(playerChoice, computChoice);                
             }
 
             function getGameWinner(playerScore, computScore) {
