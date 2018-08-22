@@ -32,19 +32,33 @@
                 const WAYSTOWIN = [['Rock', 'Scissors'], ['Paper', 'Rock'], ['Scissors', 'Paper']];
 
                 for (let way of WAYSTOWIN) {
-                    if (way[0] === playerChoice && way[1] === computChoice) {
-                        console.log('You win that round! ' + playerChoice + ' beats ' + computChoice + '!');
+                    if (way[0] === playerChoice && way[1] === computChoice) {                        
                         return 'Player';
                     }
                 }
 
-                if (playerChoice === computChoice) {
-                    console.log('You both lose! Or win... Anyway, it\'s a tie!');
+                if (playerChoice === computChoice) {                   
                     return 'Tie';
                 }
-
-                console.log('You lose that round! ' + computChoice + ' beats ' + playerChoice + '!');
+                
                 return 'Computer';
+            }
+
+            function displayRoundWinner(roundWinner, playerChoice, computChoice) {
+                
+                switch(roundWinner) {
+                    case 'Player':             
+                        return 'You win that round! ' + playerChoice + ' beats ' + computChoice + '!';
+                        break;
+
+                    case 'Computer':
+                        return 'You lose that round! ' + computChoice + ' beats ' + playerChoice + '!';
+                        break;
+
+                    case 'Tie':
+                        return 'You both lose! Or win... Anyway, it\'s a tie!';
+                        break;                        
+                }
             }
 
             function playRound() {                
@@ -52,18 +66,37 @@
 
                 let playerChoice = getPlayerChoice(OPTIONS);
                 let computChoice = computerPlay(OPTIONS);
+                let roundWinner = getRoundWinner(playerChoice, computChoice);
 
-                return getRoundWinner(playerChoice, computChoice);                
+                console.log(displayRoundWinner(roundWinner, playerChoice, computChoice));
+
+                return roundWinner;            
             }
 
             function getGameWinner(playerScore, computScore) {
                 if (playerScore > computScore) {
-                    return ('You win ' + playerScore + ' to ' + computScore + '!');
+                    return 'Player';
                 }
                 if (computScore > playerScore) {
-                    return ('You lose ' + computScore + ' to ' + playerScore + '.');
+                    return 'Computer';
                 }
-                return ('It\'s a tie. ' + playerScore + '-' + computScore);
+                return 'Tie';
+            }
+
+            function displayGameScore(gameWinner, playerScore, computScore) {
+                switch (gameWinner) {
+                    case 'Player':
+                        return 'You win ' + playerScore + ' to ' + computScore + '!';
+                        break;
+
+                    case 'Computer':        
+                        return 'You lose ' + computScore + ' to ' + playerScore + '.';
+                        break;
+                
+                    case 'Tie':
+                        return 'It\'s a tie. ' + playerScore + '-' + computScore;
+                        break;
+                }
             }
 
             function game() {
@@ -91,7 +124,9 @@
                     rounds ++;
                 }
                 
-                console.log(getGameWinner(playerScore, computScore));
+                let gameWinner = getGameWinner(playerScore, computScore);
+
+                console.log(displayGameScore(gameWinner, playerScore, computScore));
             }
             
         </script>
