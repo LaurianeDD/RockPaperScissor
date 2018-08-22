@@ -37,13 +37,3 @@ INSTRUCTIONS:
     3. Feel free to re-work your previous functions if you need to. Specifically, you might want to change the return value to something more useful.
 
     4. Feel free to create more “helper” functions if you think it would be useful.
-
-PSEUDO
-- Pseudo for a round
-
-Get player's choice
-Generate computer's choice
-Compare answers and returned winner
-
-
- - Pseudo for a five rounds game
