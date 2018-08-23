@@ -14,50 +14,46 @@
                 return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
             }
 
-            function computerPlay(OPTIONS) {
-                return OPTIONS[getRandomNumber(OPTIONS.length)];
+            function getComputerChoice(options) {
+                return options[getRandomNumber(options.length)];
             }           
 
-            function getPlayerChoice(OPTIONS) {
+            function getPlayerChoice(options) {
                 let choice;
 
-                while (!OPTIONS.includes(choice)) {
-                    choice = capitalize(prompt('Enter your choice:', OPTIONS));
+                while (!options.includes(choice)) {
+                    choice = capitalize(prompt('Enter your choice:', options));
                 }
                 
                 return choice;
             }
 
-            function getRoundWinner(playerChoice, computChoice) {
+            function getRoundWinner(playerChoice, computerChoice) {
                 const WAYSTOWIN = [['Rock', 'Scissors'], ['Paper', 'Rock'], ['Scissors', 'Paper']];
 
                 for (let way of WAYSTOWIN) {
-                    if (way[0] === playerChoice && way[1] === computChoice) {                        
+                    if (way[0] === playerChoice && way[1] === computerChoice) {                        
                         return 'Player';
                     }
                 }
 
-                if (playerChoice === computChoice) {                   
+                if (playerChoice === computerChoice) {                   
                     return 'Tie';
                 }
                 
                 return 'Computer';
             }
 
-            function displayRoundWinner(roundWinner, playerChoice, computChoice) {
-                
-                switch(roundWinner) {
+            function displayRoundWinner(roundWinner, playerChoice, computerChoice) {                
+                switch (roundWinner) {
                     case 'Player':             
-                        return 'You win that round! ' + playerChoice + ' beats ' + computChoice + '!';
-                        break;
-
+                        return 'You win that round! ' + playerChoice + ' beats ' + computerChoice + '!';
+                        
                     case 'Computer':
-                        return 'You lose that round! ' + computChoice + ' beats ' + playerChoice + '!';
-                        break;
-
+                        return 'You lose that round! ' + computerChoice + ' beats ' + playerChoice + '!';
+                        
                     case 'Tie':
-                        return 'You both lose! Or win... Anyway, it\'s a tie!';
-                        break;                        
+                        return "You both lose! Or win... Anyway, it's a tie!";                                               
                 }
             }
 
@@ -65,10 +61,10 @@
                 const OPTIONS = ['Rock', 'Paper', 'Scissors'];
 
                 let playerChoice = getPlayerChoice(OPTIONS);
-                let computChoice = computerPlay(OPTIONS);
-                let roundWinner = getRoundWinner(playerChoice, computChoice);
+                let computerChoice = getComputerChoice(OPTIONS);
+                let roundWinner = getRoundWinner(playerChoice, computerChoice);
 
-                console.log(displayRoundWinner(roundWinner, playerChoice, computChoice));
+                console.log(displayRoundWinner(roundWinner, playerChoice, computerChoice));
 
                 return roundWinner;            
             }
@@ -87,24 +83,20 @@
                 switch (gameWinner) {
                     case 'Player':
                         return 'You win ' + playerScore + ' to ' + computScore + '!';
-                        break;
-
+                        
                     case 'Computer':        
                         return 'You lose ' + computScore + ' to ' + playerScore + '.';
-                        break;
-                
+                                        
                     case 'Tie':
-                        return 'It\'s a tie. ' + playerScore + '-' + computScore;
-                        break;
+                        return "It's a tie. " + playerScore + "-" + computScore;
                 }
             }
 
             function game() {
-                let rounds = 0;
                 let playerScore = 0;
                 let computScore = 0;
                 
-                while (rounds < 5) {
+                for (rounds = 0; rounds < 5; rounds++) {
                     let roundWinner = playRound()
                     
                     switch (roundWinner) {
@@ -120,8 +112,6 @@
                         case 'Tie':
                             break;
                     }
-
-                    rounds ++;
                 }
                 
                 let gameWinner = getGameWinner(playerScore, computScore);
